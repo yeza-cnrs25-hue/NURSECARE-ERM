@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#102b46">
+  <title>NURSECARE | Electronic Nursing Record</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toast" class="toast" role="status"></div>
+
+  <section id="authScreen" class="auth-screen">
+    <div class="auth-visual">
+      <div class="university">
+        <div class="university-mark">N<span>+</span></div>
+        <div><b>UNIVERSITAS KATOLIK WIDYA MANDALA SURABAYA</b><small>FAKULTAS KEPERAWATAN</small></div>
+      </div>
+      <div class="visual-copy">
+        <span class="eyebrow light">ELECTRONIC NURSING RECORD</span>
+        <h1>Care with<br><em>knowledge.</em><br>Document with purpose.</h1>
+        <p>Platform dokumentasi asuhan keperawatan yang terstruktur, terintegrasi, dan mudah digunakan.</p>
+        <div class="visual-art" aria-hidden="true">
+          <div class="art-ring ring-one"></div><div class="art-ring ring-two"></div>
+          <div class="art-cross">+</div>
+          <div class="art-pill pill-one">✚ <span>Patient care</span></div>
+          <div class="art-pill pill-two">✓ <span>Nursing record</span></div>
+        </div>
+      </div>
+      <div class="visual-footer">NURSECARE <span>•</span> ACADEMIC PROTOTYPE 2026</div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-mobile-brand"><div class="brand-symbol">N+</div><b>NURSECARE</b></div>
+      <div class="auth-box">
+        <div id="loginView">
+          <span class="eyebrow">SECURE WORKSPACE</span>
+          <h2>Selamat datang</h2>
+          <p class="muted">Masuk untuk melanjutkan ke ruang kerja keperawatan Anda.</p>
+          <form id="loginForm" class="form-stack">
+            <label for="loginUsername">Email</label>
+            <input id="loginUsername" type="email" autocomplete="email" required placeholder="Masukkan email">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" required placeholder="Masukkan password">
+            <button class="btn btn-primary btn-full" type="submit">Masuk ke NURSECARE <span>→</span></button>
+          </form>
+          <p class="auth-switch">Belum memiliki akun? <button class="text-button" id="showRegister">Daftar akun</button></p>
+        </div>
+        <div id="registerView" class="hidden">
+          <span class="eyebrow">CREATE ACCOUNT</span>
+          <h2>Buat akun baru</h2>
+          <p class="muted">Daftarkan akun untuk menggunakan prototipe NURSECARE.</p>
+          <form id="registerForm" class="form-stack">
+            <label for="registerName">Nama lengkap</label>
+            <input id="registerName" required placeholder="Nama lengkap">
+            <label for="registerUsername">Email</label>
+            <input id="registerUsername" type="email" autocomplete="email" required placeholder="Masukkan email aktif">
+            <label for="registerPassword">Password</label>
+            <input id="registerPassword" type="password" required minlength="6" placeholder="Minimal 6 karakter">
+            <button class="btn btn-primary btn-full" type="submit">Buat akun <span>→</span></button>
+          </form>
+          <p class="auth-switch">Sudah memiliki akun? <button class="text-button" id="showLogin">Masuk</button></p>
+        </div>
+        <p class="auth-note">Prototipe akademik • Gunakan data pasien fiktif saja.</p>
+      </div>
+      <div class="auth-bottom">© 2026 NURSECARE · Fakultas Keperawatan UKWMS</div>
+    </div>
+  </section>
+
+  <div id="app" class="app hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand"><div class="brand-symbol">N+</div><div><b>NURSECARE</b><small>NURSING RECORD</small></div></div>
+      <div class="side-campus">FAKULTAS KEPERAWATAN<br><span>UKWMS · ACADEMIC PROTOTYPE</span></div>
+      <div class="nav-label">WORKSPACE</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+        <button class="nav-item" data-page="patients"><span class="nav-icon">♙</span>Data Pasien</button>
+        <div class="nav-label nav-label-spaced">ASUHAN KEPERAWATAN</div>
+        <button class="nav-item" data-page="assessment"><span class="nav-icon">▤</span>Pengkajian</button>
+        <button class="nav-item" data-page="diagnosis"><span class="nav-icon">✚</span>Diagnosis SDKI</button>
+        <button class="nav-item" data-page="planning"><span class="nav-icon">◎</span>Luaran & Intervensi</button>
+        <button class="nav-item" data-page="implementation"><span class="nav-icon">✓</span>Implementasi</button>
+        <button class="nav-item" data-page="evaluation"><span class="nav-icon">▣</span>Evaluasi SOAP</button>
+        <div class="nav-label nav-label-spaced">REKAM MEDIS</div>
+        <button class="nav-item" data-page="history"><span class="nav-icon">◷</span>Riwayat Dokumentasi</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="profile-mini"><div class="avatar" id="sideAvatar">P</div><div><b id="sideUser">Perawat</b><small>Pengguna NURSECARE</small></div></div>
+        <button class="logout-btn" id="logoutBtn">↪ <span>Keluar</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Buka menu">☰</button>
+        <div><span class="eyebrow" id="breadcrumb">NURSECARE / WORKSPACE</span><h1 id="pageHeading">Dashboard</h1></div>
+        <div class="topbar-right"><div class="today-chip" id="todayLabel"></div><div class="top-avatar" id="topAvatar">P</div></div>
+      </header>
+
+      <div class="content">
+        <section class="page active" id="page-dashboard">
+          <div class="hero-banner">
+            <div><span class="hero-kicker">NURSING CARE MANAGEMENT</span><h2>Halo, <span id="welcomeName">Perawat</span>.</h2><p>Kelola dokumentasi asuhan keperawatan dengan lebih terstruktur hari ini.</p></div>
+            <div class="hero-symbol">N<span>+</span></div>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card"><div class="stat-top"><span>Total pasien</span><span class="stat-icon teal">♙</span></div><strong id="statPatients">0</strong><small>Pasien simulasi tersimpan</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Pengkajian</span><span class="stat-icon blue">▤</span></div><strong id="statAssessments">0</strong><small>Dokumentasi pengkajian</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Diagnosis</span><span class="stat-icon purple">✚</span></div><strong id="statDiagnoses">0</strong><small>Diagnosis keperawatan</small></article>
+            <article class="stat-card"><div class="stat-top"><span>Evaluasi SOAP</span><span class="stat-icon orange">▣</span></div><strong id="statEvaluations">0</strong><small>Catatan evaluasi</small></article>
+          </div>
+          <div class="dashboard-grid">
+            <article class="panel"><div class="panel-heading"><div><span class="eyebrow">QUICK ACCESS</span><h3>Mulai dokumentasi</h3></div></div><div class="quick-grid">
+              <button class="quick-action" data-go="patients"><span class="quick-icon teal">♙</span><b>Tambah pasien</b><small>Daftarkan pasien simulasi</small></button>
+              <button class="quick-action" data-go="assessment"><span class="quick-icon blue">▤</span><b>Pengkajian</b><small>Catat hasil pengkajian</small></button>
+              <button class="quick-action" data-go="diagnosis"><span class="quick-icon purple">✚</span><b>Diagnosis SDKI</b><small>Dokumentasikan diagnosis</small></button>
+              <button class="quick-action" data-go="history"><span class="quick-icon orange">◷</span><b>Riwayat pasien</b><small>Lihat dokumentasi tersimpan</small></button>
+            </div></article>
+            <article class="panel recent-panel"><div class="panel-heading"><div><span class="eyebrow">LATEST RECORDS</span><h3>Dokumentasi terbaru</h3></div><button class="link-button" data-go="history">Lihat semua →</button></div><div id="recentRecords" class="recent-list"><div class="empty-state">Belum ada dokumentasi. Mulai dengan menambahkan pasien.</div></div></article>
+          </div>
+          <div class="disclaimer"><b>Catatan akademik:</b> NURSECARE adalah prototipe pembelajaran. Gunakan data fiktif, verifikasi isi dokumentasi berdasarkan standar yang berlaku, dan jangan gunakan untuk pelayanan klinis nyata.</div>
+        </section>
+
+        <section class="page" id="page-patients">
+          <div class="page-intro"><div><span class="eyebrow">PATIENT MANAGEMENT</span><h2>Data Pasien</h2><p>Kelola identitas pasien simulasi dalam sistem.</p></div><button class="btn btn-primary" id="addPatientBtn">＋ Tambah pasien</button></div>
+          <article class="panel" id="patientEditor"><div class="panel-heading"><div><span class="eyebrow">PATIENT PROFILE</span><h3 id="patientFormTitle">Formulir pasien baru</h3></div><button class="icon-button" id="cancelPatientEdit" type="button" title="Tutup">×</button></div>
+            <form id="patientForm" class="form-grid">
+              <input type="hidden" id="patientId">
+              <div class="field"><label for="mrn">Nomor rekam medis *</label><input id="mrn" required placeholder="Contoh: NC-0001"></div>
+              <div class="field"><label for="patientName">Nama pasien fiktif *</label><input id="patientName" required placeholder="Nama simulasi"></div>
+              <div class="field"><label for="patientAge">Usia (tahun) *</label><input id="patientAge" type="number" min="0" max="120" required placeholder="Usia"></div>
+              <div class="field"><label for="patientGender">Jenis kelamin *</label><select id="patientGender" required><option value="">Pilih</option><option>Perempuan</option><option>Laki-laki</option></select></div>
+              <div class="field"><label for="medicalDiagnosis">Diagnosis medis</label><input id="medicalDiagnosis" placeholder="Diagnosis medis simulasi"></div>
+              <div class="field"><label for="admissionDate">Tanggal masuk</label><input id="admissionDate" type="date"></div>
+              <div class="form-actions"><button class="btn btn-primary" type="submit">Simpan pasien</button><button class="btn btn-ghost" type="reset" id="resetPatient">Bersihkan</button></div>
+            </form>
+          </article>
+          <article class="panel"><div class="panel-heading"><div><span class="eyebrow">PATIENT DIRECTORY</span><h3>Daftar pasien</h3></div><span class="count-pill" id="patientCount">0 pasien</span></div><div class="table-tools"><input id="patientSearch" class="search-input" placeholder="⌕ Cari nama / nomor RM..."></div><div class="table-wrap"><table><thead><tr><th>No. RM</th><th>Nama pasien</th><th>Usia</th><th>Jenis kelamin</th><th>Diagnosis medis</th><th>Aksi</th></tr></thead><tbody id="patientTable"></tbody></table></div></article>
+        </section>
+
+        <section class="page" id="page-assessment">
+          <div class="page-intro"><div><span class="eyebrow">NURSING PROCESS · 01</span><h2>Pengkajian Keperawatan</h2><p>Kumpulkan data subjektif, objektif, dan pemeriksaan awal.</p></div></div>
+          <article class="panel"><form id="assessmentForm" class="form-grid">
+            <div class="field full"><label for="assessmentPatient">Pilih pasien *</label><select id="assessmentPatient" class="patient-select" required></select></div>
+            <div class="field full"><label for="complaint">Keluhan utama *</label><textarea id="complaint" required placeholder="Tuliskan keluhan utama pasien simulasi..."></textarea></div>
+            <div class="field full"><label for="history">Riwayat kesehatan</label><textarea id="history" placeholder="Riwayat kesehatan sekarang, dahulu, dan keluarga..."></textarea></div>
+            <div class="field"><label for="bp">Tekanan darah</label><input id="bp" placeholder="Contoh: 120/80 mmHg"></div>
+            <div class="field"><label for="pulse">Nadi</label><input id="pulse" placeholder="x/menit"></div>
+            <div class="field"><label for="temp">Suhu tubuh</label><input id="temp" placeholder="°C"></div>
+            <div class="field"><label for="resp">Frekuensi napas</label><input id="resp" placeholder="x/menit"></div>
+            <div class="field"><label for="spo2">SpO₂</label><input id="spo2" placeholder="%"></div>
+            <div class="field"><label for="pain">Skala nyeri</label><input id="pain" type="number" min="0" max="10" placeholder="0–10"></div>
+            <div class="form-actions"><button class="btn btn-primary">Simpan pengkajian</button></div>
+          </form></article>
+        </section>
+
+        <section class="page" id="page-diagnosis">
+          <div class="page-intro"><div><span class="eyebrow">NURSING PROCESS · 02</span><h2>Diagnosis Keperawatan</h2><p>Dokumentasikan diagnosis dengan acuan SDKI.</p></div></div>
+          <article class="panel"><form id="diagnosisForm" class="form-grid">
+            <div class="field full"><label for="diagnosisPatient">Pilih pasien *</label><select id="diagnosisPatient" class="patient-select" required></select></div>
+            <div class="field full"><label for="nursingDiagnosis">Diagnosis keperawatan *</label><input id="nursingDiagnosis" required placeholder="Nama diagnosis sesuai SDKI"></div>
+            <div class="field"><label for="diagnosisCode">Kode diagnosis (opsional)</label><input id="diagnosisCode" placeholder="Kode SDKI jika diketahui"></div>
+            <div class="field"><label for="diagnosisType">Kategori</label><select id="diagnosisType"><option value="Aktual">Aktual</option><option value="Risiko">Risiko</option><option value="Promosi kesehatan">Promosi kesehatan</option></select></div>
+            <div class="field full"><label for="ds">Data subjektif (DS)</label><textarea id="ds" placeholder="Data yang disampaikan pasien..."></textarea></div>
+            <div class="field full"><label for="doData">Data objektif (DO)</label><textarea id="doData" placeholder="Hasil observasi dan pemeriksaan..."></textarea></div>
+            <div class="field full"><label for="cause">Penyebab / faktor risiko</label><textarea id="cause" placeholder="Faktor yang berhubungan / faktor risiko..."></textarea></div>
+            <div class="form-actions"><button class="btn btn-primary">Simpan diagnosis</button></div>
+          </form></article>
+        </section>
+
+        <section class="page" id="page-planning">
+          <div class="page-intro"><div><span class="eyebrow">NURSING PROCESS · 03</span><h2>Luaran & Intervensi</h2><p>Rencanakan luaran SLKI dan intervensi SIKI.</p></div></div>
+          <article class="panel"><form id="planningForm" class="form-grid">
+            <div class="field full"><label for="planningPatient">Pilih pasien *</label><select id="planningPatient" class="patient-select" required></select></div>
+            <div class="field full"><label for="relatedDiagnosis">Diagnosis terkait</label><input id="relatedDiagnosis" placeholder="Diagnosis yang menjadi dasar rencana"></div>
+            <div class="field full"><label for="outcome">Luaran keperawatan (SLKI) *</label><textarea id="outcome" required placeholder="Tuliskan nama luaran yang sesuai..."></textarea></div>
+            <div class="field full"><label for="criteria">Kriteria hasil / indikator</label><textarea id="criteria" placeholder="Indikator, target, dan waktu pencapaian..."></textarea></div>
+            <div class="field full"><label for="intervention">Intervensi keperawatan (SIKI) *</label><textarea id="intervention" required placeholder="Tuliskan nama intervensi yang sesuai..."></textarea></div>
+            <div class="field"><label for="observation">Observasi</label><textarea id="observation"></textarea></div>
+            <div class="field"><label for="therapeutic">Terapeutik</label><textarea id="therapeutic"></textarea></div>
+            <div class="field"><label for="education">Edukasi</label><textarea id="education"></textarea></div>
+            <div class="field"><label for="collaboration">Kolaborasi</label><textarea id="collaboration"></textarea></div>
+            <div class="form-actions"><button class="btn btn-primary">Simpan rencana</button></div>
+          </form></article>
+        </section>
+
+        <section class="page" id="page-implementation">
+          <div class="page-intro"><div><span class="eyebrow">NURSING PROCESS · 04</span><h2>Implementasi Keperawatan</h2><p>Catat tindakan yang dilakukan dan respons pasien simulasi.</p></div></div>
+          <article class="panel"><form id="implementationForm" class="form-grid">
+            <div class="field full"><label for="implementationPatient">Pilih pasien *</label><select id="implementationPatient" class="patient-select" required></select></div>
+            <div class="field full"><label for="action">Tindakan keperawatan *</label><textarea id="action" required placeholder="Uraikan tindakan yang dilakukan..."></textarea></div>
+            <div class="field"><label for="actionDate">Tanggal dan waktu</label><input id="actionDate" type="datetime-local"></div>
+            <div class="field"><label for="implementer">Pelaksana</label><input id="implementer" placeholder="Nama perawat / mahasiswa"></div>
+            <div class="field full"><label for="response">Respons pasien</label><textarea id="response" placeholder="Tuliskan respons setelah tindakan..."></textarea></div>
+            <div class="form-actions"><button class="btn btn-primary">Simpan implementasi</button></div>
+          </form></article>
+        </section>
+
+        <section class="page" id="page-evaluation">
+          <div class="page-intro"><div><span class="eyebrow">NURSING PROCESS · 05</span><h2>Evaluasi Keperawatan</h2><p>Evaluasi perkembangan pasien menggunakan format SOAP.</p></div></div>
+          <article class="panel"><form id="evaluationForm" class="form-grid">
+            <div class="field full"><label for="evaluationPatient">Pilih pasien *</label><select id="evaluationPatient" class="patient-select" required></select></div>
+            <div class="field full"><label for="soapS">S — Subjective</label><textarea id="soapS" placeholder="Data subjektif / keluhan pasien..."></textarea></div>
+            <div class="field full"><label for="soapO">O — Objective</label><textarea id="soapO" placeholder="Data objektif / hasil pemeriksaan..."></textarea></div>
+            <div class="field full"><label for="soapA">A — Assessment</label><textarea id="soapA" placeholder="Analisis perkembangan / masalah..."></textarea></div>
+            <div class="field full"><label for="soapP">P — Planning</label><textarea id="soapP" placeholder="Rencana tindak lanjut..."></textarea></div>
+            <div class="form-actions"><button class="btn btn-primary">Simpan evaluasi SOAP</button></div>
+          </form></article>
+        </section>
+
+        <section class="page" id="page-history">
+          <div class="page-intro"><div><span class="eyebrow">MEDICAL RECORD</span><h2>Riwayat Dokumentasi</h2><p>Lihat seluruh catatan keperawatan berdasarkan pasien.</p></div></div>
+          <article class="panel"><div class="history-filter"><div class="field"><label for="historyPatient">Filter pasien</label><select id="historyPatient" class="patient-select"></select></div><div class="field"><label for="historyType">Jenis dokumentasi</label><select id="historyType"><option value="all">Semua dokumentasi</option><option value="Pengkajian">Pengkajian</option><option value="Diagnosis SDKI">Diagnosis SDKI</option><option value="Rencana SLKI/SIKI">Rencana SLKI/SIKI</option><option value="Implementasi">Implementasi</option><option value="Evaluasi SOAP">Evaluasi SOAP</option></select></div></div><div id="historyList" class="history-list"></div></article>
+        </section>
+        <footer class="app-footer">NURSECARE · Electronic Nursing Record <span>Academic Prototype 2026</span></footer>
+      </div>
+    </main>
+  </div>
+  <script type="module" src="script.js"></script>
+</body>
+</html>
